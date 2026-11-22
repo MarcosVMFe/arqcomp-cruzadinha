@@ -1,0 +1,260 @@
+:root {
+  --azul: #1a6bb5;
+  --escuro: #1f2547;
+  --rosa: #e8135c;
+  --fundo: #f4f6fa;
+  --borda: #b9c3d6;
+  --certa: #c9f0d2;
+  --certa-borda: #2e9e4f;
+  --errada: #ffd4d9;
+  --errada-borda: #d6334a;
+  --palavra: #dbe9fb;
+  --ativa: #ffe68a;
+  --celula: 34px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  background: var(--fundo);
+  color: var(--escuro);
+  line-height: 1.4;
+}
+
+.topo {
+  background: var(--escuro);
+  color: #fff;
+  padding: 20px 16px;
+  text-align: center;
+  border-bottom: 6px solid var(--rosa);
+}
+.topo h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.3rem, 4vw, 1.9rem);
+}
+.topo p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.jogo {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 16px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(280px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.painel-tabuleiro,
+.painel-pistas {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: 2px solid var(--azul);
+  background: #fff;
+  color: var(--azul);
+  cursor: pointer;
+}
+.btn:hover {
+  background: #eef5fd;
+}
+.btn.primario {
+  background: var(--azul);
+  color: #fff;
+}
+.btn.primario:hover {
+  background: #14568f;
+}
+.btn:focus-visible {
+  outline: 3px solid var(--ativa);
+  outline-offset: 2px;
+}
+.placar {
+  margin-left: auto;
+  font-size: 1.05rem;
+}
+.placar strong {
+  color: var(--rosa);
+}
+
+.mensagem {
+  min-height: 1.4em;
+  margin: 4px 0 10px;
+  font-size: 0.92rem;
+}
+.mensagem.ok {
+  color: var(--certa-borda);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.rolagem {
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(var(--colunas), var(--celula));
+  grid-auto-rows: var(--celula);
+  gap: 2px;
+  width: max-content;
+}
+
+.bloco {
+  background: transparent;
+}
+
+.celula {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid var(--escuro);
+  border-radius: 3px;
+}
+.celula .num {
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--azul);
+  pointer-events: none;
+  line-height: 1;
+}
+.celula input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font:
+    700 1.2rem/1 system-ui,
+    sans-serif;
+  text-transform: uppercase;
+  color: var(--escuro);
+  padding: 8px 0 0;
+  caret-color: transparent;
+  cursor: pointer;
+}
+.celula input:focus {
+  outline: none;
+}
+
+.celula.palavra {
+  background: var(--palavra);
+}
+.celula.ativa {
+  background: var(--ativa);
+}
+.celula.errada {
+  background: var(--errada);
+  border-color: var(--errada-borda);
+}
+.celula.certa {
+  background: var(--certa);
+  border-color: var(--certa-borda);
+}
+.celula.ativa.errada,
+.celula.ativa.certa {
+  box-shadow: 0 0 0 2px var(--ativa);
+}
+
+.dica {
+  font-size: 0.82rem;
+  color: #5b6480;
+  margin: 10px 0 0;
+}
+
+.painel-pistas {
+  display: grid;
+  gap: 18px;
+}
+.painel-pistas h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--azul);
+  border-bottom: 2px solid var(--azul);
+  padding-bottom: 4px;
+}
+.pistas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.pistas li {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  font-size: 0.93rem;
+}
+.pistas li:hover {
+  background: #f0f4fa;
+}
+.pistas li .n {
+  font-weight: 700;
+  color: var(--azul);
+}
+.pistas li .sel {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.pistas li.ativa {
+  background: var(--ativa);
+}
+.pistas li.certa {
+  border-left-color: var(--certa-borda);
+  background: var(--certa);
+}
+.pistas li.certa .sel {
+  color: var(--certa-borda);
+}
+.pistas li.errada {
+  border-left-color: var(--errada-borda);
+  background: var(--errada);
+}
+.pistas li.errada .sel {
+  color: var(--errada-borda);
+}
+
+@media (max-width: 900px) {
+  .jogo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :root {
+    --celula: 30px;
+  }
+  .celula input {
+    font-size: 1.05rem;
+  }
+}
