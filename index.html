@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cruzadinha de Arquitetura Computacional</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>Cruzadinha de Arquitetura Computacional</h1>
+    <p>Leia a pista, descubra o termo e digite as letras direto nas casas. Sem acentos e sem espaços.</p>
+  </header>
+
+  <main class="jogo">
+    <section class="painel-tabuleiro" aria-label="Tabuleiro">
+      <div class="barra">
+        <button id="btn-conferir" class="btn primario" type="button">Conferir</button>
+        <button id="btn-reiniciar" class="btn" type="button">Reiniciar</button>
+        <div class="placar" aria-live="polite">Acertos: <strong id="contador">0 de 16 palavras</strong></div>
+      </div>
+      <p id="mensagem" class="mensagem" aria-live="polite"></p>
+      <div class="rolagem">
+        <div id="tabuleiro" class="tabuleiro"></div>
+      </div>
+      <p class="dica">Dica: clique de novo na mesma casa (ou use a barra de espaço) para trocar entre horizontal e vertical. Setas movem o cursor.</p>
+    </section>
+
+    <section class="painel-pistas" aria-label="Pistas">
+      <div>
+        <h2>Horizontais</h2>
+        <ol id="pistas-h" class="pistas"></ol>
+      </div>
+      <div>
+        <h2>Verticais</h2>
+        <ol id="pistas-v" class="pistas"></ol>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
